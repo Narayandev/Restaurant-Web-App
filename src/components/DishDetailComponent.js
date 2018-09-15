@@ -2,22 +2,9 @@ import React, { Component } from 'react';
 import {Card, CardImg, CardText, CardImgOverlay, CardBody, CardTitle} from 'reactstrap';
 import {ListGroup, ListGroupItem} from 'reactstrap';
 
-class DishDetail extends Component{
-
-    constructor(props){
-        super(props);
-    }
-
-     componentDidMount() {
-        console.log('DishDetail Component componentDidMount invoked');
-     }
-
-     componentDidUpdate() {
-         console.log('DisheDetail Componentdidupdate invoked');
-     }
 
 
-    renderDish(dish){
+    function RenderDish({dish}){
         if(dish!=null){
             return(
                 <div className="col-12 col-md-5 m-1">
@@ -38,7 +25,7 @@ class DishDetail extends Component{
         }
     }
 
-    renderComments(dish){
+    function RenderComments({dish}){
 
       
         if(dish!= null && dish.comments.length != 0){
@@ -63,20 +50,16 @@ class DishDetail extends Component{
 
     }
 
-    render(){
-
-        console.log('DishDetail Component render method invoked');
-        const dishdetail = this.props.dish; 
+    const DishDetail = (props) => {
         
         return(
             <div className="container">
                 <div className="row">
-                    {this.renderDish(dishdetail)}
-                    {this.renderComments(dishdetail)}
+                    <RenderDish dish={props.dish}/>
+                    <RenderComments dish={props.dish}/>
                 </div>
             </div>
         );
     }
-}
 
 export {DishDetail};
