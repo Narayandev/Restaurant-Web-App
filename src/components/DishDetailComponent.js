@@ -6,8 +6,16 @@ class DishDetail extends Component{
 
     constructor(props){
         super(props);
-
     }
+
+     componentDidMount() {
+        console.log('DishDetail Component componentDidMount invoked');
+     }
+
+     componentDidUpdate() {
+         console.log('DisheDetail Componentdidupdate invoked');
+     }
+
 
     renderDish(dish){
         if(dish!=null){
@@ -37,13 +45,14 @@ class DishDetail extends Component{
             return(
                 <div className="col-xs-12 col-sm-12 col-md-5 m-1">
                     <h4>Comments</h4>
-                    {dish.comments.map((review)=>(
-                        <ListGroup>
-                            <ListGroupItem key = {review.id}>{review.comment}</ListGroupItem>
-                            <ListGroupItem key = {review.id}>--{review.author}, {new Date(Date.parse(review.date)).toString()}</ListGroupItem>
+                    {dish.comments.map((review)=>{
+                        return(
+                        <ListGroup key={review.id}>
+                            <ListGroupItem>{review.comment}</ListGroupItem>
+                            <ListGroupItem>--{review.author}, {new Intl.DateTimeFormat('en-US',{year: 'numeric', month: 'short', day:'2-digit'}).format(new Date(Date.parse(review.date)))}</ListGroupItem>
                         </ListGroup>
-                    
-                ))}           
+                        );
+                    })}           
              </div>);
         }   
         else{
@@ -56,15 +65,18 @@ class DishDetail extends Component{
 
     render(){
 
-        const dishdetail = this.props.selectedDish; 
+        console.log('DishDetail Component render method invoked');
+        const dishdetail = this.props.dish; 
         
         return(
-            <div className="row">
-                {this.renderDish(dishdetail)}
-                {this.renderComments(dishdetail)}
+            <div className="container">
+                <div className="row">
+                    {this.renderDish(dishdetail)}
+                    {this.renderComments(dishdetail)}
+                </div>
             </div>
         );
     }
 }
 
-export default DishDetail;
+export {DishDetail};
