@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Card, CardImg, CardText, CardImgOverlay, CardBody, CardTitle, Breadcrumb, BreadcrumbItem} from 'reactstrap';
 import {ListGroup, ListGroupItem} from 'reactstrap';
 import {Link} from 'react-router-dom';
+import Comment from './CommentFormComponent';
 
 
 
@@ -40,7 +41,8 @@ import {Link} from 'react-router-dom';
                             <ListGroupItem>--{review.author}, {new Intl.DateTimeFormat('en-US',{year: 'numeric', month: 'short', day:'2-digit'}).format(new Date(Date.parse(review.date)))}</ListGroupItem>
                         </ListGroup>
                         );
-                    })}           
+                    })}
+                    <Comment />           
              </div>);
         }   
         else{

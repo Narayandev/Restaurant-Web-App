@@ -12,7 +12,7 @@ class Header extends Component{
             isModalopen: false
         };
         // this.toggleNav = this.toggleNav.bind(this);
-         this.toggleModal = this.toggleModal.bind(this)
+         this.toggleModal = this.toggleModal.bind(this);
          this.handleLogin = this.handleLogin.bind(this);
     }
 
