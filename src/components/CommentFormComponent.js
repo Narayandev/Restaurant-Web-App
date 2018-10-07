@@ -26,8 +26,8 @@ class Comment extends Component {
 
     handleSubmit(values) {
         this.toggleModal();
-        console.log("Current State is: " + JSON.stringify(values));
-        alert("Current State is: " + JSON.stringify(values));
+        console.log(values);
+        this.props.addComment(this.props.dishId,values.rating,values.author,values.comment);
         
     }
 
@@ -59,8 +59,8 @@ class Comment extends Component {
                                 </Control.select>
                             </FormGroup>
                             <FormGroup>
-                                <Label htmlFor="name"> Your Name </Label>
-                                <Control.text model=".name" id="name" 
+                                <Label htmlFor="author"> Your Name </Label>
+                                <Control.text model=".author" id="author" name="author"
                                     placeholder="Your Name" className="form-control"
                                     validators= {{ required, minLength: minLength(2) }} />
                                 <Errors

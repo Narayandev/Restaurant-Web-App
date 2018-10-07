@@ -27,7 +27,7 @@ import Comment from './CommentFormComponent';
         }
     }
 
-    function RenderComments({comments}){
+    function RenderComments({comments, addComment, dishId}){
 
       
         if(comments.length != 0){
@@ -42,7 +42,7 @@ import Comment from './CommentFormComponent';
                         </ListGroup>
                         );
                     })}
-                    <Comment />           
+                    <Comment dishId={dishId} addComment={addComment} />           
              </div>);
         }   
         else{
@@ -70,7 +70,9 @@ import Comment from './CommentFormComponent';
                 </div>
                 <div className="row">
                     <RenderDish dish={props.dish}/>
-                    <RenderComments comments={props.comments}/>
+                    <RenderComments comments={props.comments}
+                                    addComment = {props.addComment}
+                                    dishId = {props.dish.id} />
                 </div>
             </div>
         );
